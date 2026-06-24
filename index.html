@@ -298,11 +298,8 @@
 
   const $ = (id) => document.getElementById(id);
 
-  const LOGIN_USUARIO = 'JacksonSantana';
-  const LOGIN_SENHA = '29041988';
   const LS_ESTUDOS = 'cronograma_estudos';
   const LS_PROVAS = 'cronograma_provas';
-  const SS_LOGADO = 'cronograma_logado';
 
   function uid() {
     if (window.crypto && crypto.randomUUID) return crypto.randomUUID();
@@ -368,19 +365,6 @@
   const getProvas = () => lerLista(LS_PROVAS);
   const salvarProvas = (lista) => salvarLista(LS_PROVAS, lista);
 
-  // ===== LOGIN =====
-  $('form-entrar-senha').addEventListener('submit', function(e) {
-    e.preventDefault();
-    limparErro('usuarioEntrar'); limparErro('senhaEntrar');
-    const usuario = $('usuarioEntrar').value.trim();
-    const senha = $('senhaEntrar').value;
-    let valido = true;
-    if (usuario !== LOGIN_USUARIO) { mostrarErro('usuarioEntrar', 'Usuário incorreto.'); valido = false; }
-    if (senha !== LOGIN_SENHA) { mostrarErro('senhaEntrar', 'Senha incorreta.'); valido = false; }
-    if (!valido) return;
-    sessionStorage.setItem(SS_LOGADO, 'true');
-    entrarNoApp();
-  });
 
 
   function entrarNoApp() {
